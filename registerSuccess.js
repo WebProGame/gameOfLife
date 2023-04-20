@@ -4,5 +4,5 @@ window.onload = function()
 }
 function redirect()
 {
-    setTimeout(document.location.href = './index.php',10000);
+    setTimeout(document.location.href = './index.php',5000);
 }

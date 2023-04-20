@@ -4,8 +4,11 @@
 	if(isset($_POST['submit'])){
 		/* Define username and associated password array */
 		/* You can change username and associated password array to your pref*/
-
-		$logins = array('raymond' => '123456','humi' => '4321','david' => 'wordpass', 'zack' => 'hardpass', 'guest' => 'password');
+        if(isset($_SESSION['user'])  && isset($_SESSION['pass']))
+        {
+            print_r($_SESSION);
+        }
+		$logins = array('raymond' => '123456','humi' => '4321','david' => 'wordpass', 'jennifer' => 'hardpass', 'guest' => 'password');
         $_SESSION['username'] = $logins['raymond'];
 //		$logins += [$_SESSION["username"] => $_SESSION["password"]];
 		/* Check and assign submitted Username and Password to new variable */

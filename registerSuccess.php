@@ -1,3 +1,7 @@
+<?php session_start();
+$_SESSION['user'] = $_POST['name'];
+$_SESSION['pass'] = $_POST['pass'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +17,5 @@
     <div id="backing">
         Your registration has been filed successfully! You'll shortly be redirected to the home
     <div>
-        <script>
-            redirect();
-        </script>
 </body>
 </html>
