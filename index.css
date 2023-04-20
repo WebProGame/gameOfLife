@@ -1,0 +1,141 @@
+.block
+{
+    background-color: rgb(241, 241, 241);
+    width:30%;
+    margin: auto;
+}
+.bg
+{   width:100%;
+    height:49.5vw;
+    background-image: url('./background.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(8px);
+  -webkit-filter: blur(5px);
+
+}
+#loginTitle
+{
+    text-align: center;
+    letter-spacing: 3px;
+    width: 300px;
+    font-size: 30pt;
+    font-weight: bolder;
+}
+.loginBox
+{
+    background-color: rgb(246, 255, 253);
+    color: rgb(37, 37, 37);
+    width:300px;
+    height:500px;
+
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-60%);
+    padding: 30px;
+    border: 5px solid rgba(60, 161, 35, 0.658);
+    border-radius: 25px;
+    z-index:2;
+}
+#error
+{
+    text-align: center;
+    font-weight: bolder;
+    color:red;
+}
+#submit
+{
+  background-color: #040faa;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 48%;
+  float:right;
+}
+#register
+{
+  background-color: #04aa49;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 48%;
+  float:left;
+}
+.register
+{
+    font-weight: bold;
+    float: left;
+    padding-top: 5px;
+    padding-left: 20px;
+}
+#regLink
+{
+    color:rgb(255, 238, 0);
+}
+#regLink:hover
+{
+    color:rgb(255, 25, 25);
+}
+#submit:hover
+{
+    background-color: #2530c4; 
+}
+#register:hover
+{
+    background-color: #39ce77; 
+}
+#logo
+{
+    width:50%;
+    display: flex;
+    align-items: center;
+    margin-left:25%;
+    margin-right:25%;
+}
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+.credentials
+{
+    text-align: center;
+}
+.footer
+{
+    color:white;
+    list-style:none;
+}
+ul.footer li
+{
+    display: inline-block;
+    padding: 0% 0.5%;
+    min-width: 2%;
+  text-align: center;
+}
+ul.footer li:not(:last-child)
+{
+    border-right: 1px solid white;
+}
+h2
+{
+    text-align: center;
+}
+body
+{
+    background-color: black;
+}
