@@ -7,7 +7,7 @@
 
 		$logins = array('raymond' => '123456','humi' => '4321','david' => 'wordpass', 'zack' => 'hardpass', 'guest' => 'password');
         $_SESSION['username'] = $logins['raymond'];
-		$logins += [$_SESSION["username"] => $_SESSION["password"]];
+//		$logins += [$_SESSION["username"] => $_SESSION["password"]];
 		/* Check and assign submitted Username and Password to new variable */
 		$Username = isset($_POST['name']) ? $_POST['name'] : '';
 		$Password = isset($_POST['pass']) ? $_POST['pass'] : '';
@@ -16,7 +16,7 @@
 		if (isset($logins[$Username]) && $logins[$Username] == $Password){
 			/* Success: Set session variables and redirect to Protected page  */
 			$_SESSION['UserData']['name']=$logins[$Username];
-			header("location:./GoL.php");
+			header("location:./GoL.html");
 			exit;
 		} else {
 			/*Unsuccessful attempt: Set error message */
@@ -40,10 +40,6 @@
 
             <div class="loginBox">
                 <p id="loginTitle">LOGIN</p>
-                <?php if(isset($msg)){
-                    print_r($logins);
-                 echo $msg;
-                 } ?>
                 <label for="name" class="credentials"><b>Username</b></label>
                 <input type="text" placeholder="Username" name="name" class="inputBox" ><br>
 
