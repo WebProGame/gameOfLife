@@ -16,7 +16,7 @@
 		if (isset($logins[$Username]) && $logins[$Username] == $Password){
 			/* Success: Set session variables and redirect to Protected page  */
 			$_SESSION['UserData']['name']=$logins[$Username];
-			header("location:./game.php");
+			header("location:./GoL.php");
 			exit;
 		} else {
 			/*Unsuccessful attempt: Set error message */
@@ -50,7 +50,7 @@
                 <label for="pass"><b>Password</b></label>
                 <input type="password" placeholder="Password" name="pass" class="inputBox"><br>
 
-                <button id="register" name="register" onclick=" header('Location: register.php')">Register</button>
+                <button id="register" name="register" onclick="change()"><a href="./register.php">Register</a></button>
 
                 <button type="submit" id="submit" name="submit">Login</button>
 

@@ -1,4 +1,4 @@
 function change()
 {
-    window.location.replace("./index.html");
+    window.location.replace("./register.html");
 }
