@@ -1,0 +1,53 @@
+*{
+  font-family: monospace;
+}
+#countdownTimer{
+  color: brown;
+    
+}
+body{
+  background-image:url("gpbg3.jpg"); 
+
+    
+}
+p{
+  background-color: aliceblue;
+  color: blue;
+  border: 10px solid black;
+  width: fit-content;
+  margin-left:55% ;
+  margin-top: -70%;
+}
+td {
+  
+  border: 1px solid black;
+  padding: 10px;
+  width: 5px;
+  height: 5px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+  padding: 10px;
+  cursor: pointer;
+  background-color: grey;
+    
+}
+ 
+button{
+  color: blueviolet;
+  background-color: black;
+  border-radius: 20px;
+  border: navy;
+  
+}
+table {
+  border-collapse: collapse;
+}
+img {
+  
+  max-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  display: none;
+ }

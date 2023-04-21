@@ -1,0 +1,32 @@
+<!DOCTYPE html >
+<html lang = "en">
+  <meta charset="UTF-8" >
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="./GoL.css" type="text/css" rel="stylesheet">
+<script src="./GoL.js"></script>
+<title>GamePlay</title>
+</head>
+<body>
+  <div>
+    
+
+    <label for="pairs-needed">Size of Game:</label>
+    <select id="pairs-needed">
+      <option value="200">200</option>
+      <option value="312.5">312</option>
+      <option value="420.5">420</option>
+    </select>
+
+    <button onclick="gameUpload()">Game</button>
+    <button onclick="changeRandomCell()">Change random cell to blue</button>
+
+  </div>
+<div>
+    <table id="mxnGrid"></table>
+    <button onClick="window.location.reload();">Reset</button>
+    <a href="GamePlayRules.html">GamePlay Rules</a>
+    <a href="payroll.html">Payroll</a>
+  </div>
+</body>
+</html>

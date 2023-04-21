@@ -23,12 +23,18 @@
     font-size: 30pt;
     font-weight: bolder;
 }
+.error
+{
+    font-weight: bold;
+    text-align: center;
+    color: red;
+}
 .loginBox
 {
     background-color: rgb(246, 255, 253);
     color: rgb(37, 37, 37);
     width:300px;
-    height:400px;
+    height:550px;
 
     margin: auto;
     position: absolute;
@@ -68,7 +74,7 @@
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 48%;
+  width: 100%;
   float:left;
 }
 .register
