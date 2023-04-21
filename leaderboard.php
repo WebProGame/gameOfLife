@@ -13,10 +13,11 @@ session_start();
 <body>
     <?php
 
+    $newuser; //declare new user variable
     // We search through the players.txt file to find a certain user's data. Continues until end of file.
     $filename = "players.txt";
     $file = fopen($filename, "r");
-    while (!feof($file)) {
+    while (!feof($file)) { //while there's still content within the file...
       $line = fgets($file);
       $user = unserialize(trim($line));
     // Once found, we update their data into a new associative array, newUser
