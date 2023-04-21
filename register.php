@@ -86,7 +86,7 @@
 
                 <button type="submit" id="register" name="submit">Register</button>
 
-                <p>Already have an account? <a href="index.php">Click here to login</a></p>
+                <p>Already have an account? <a href="index.php" id="login_link">Click here to login</a></p>
 
             </div>
         </form>

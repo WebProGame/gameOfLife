@@ -1,0 +1,31 @@
+#scoreboard {
+    font-family:'Roboto';
+    color:whitesmoke;
+    width: 50%;
+    border-spacing: 6px;
+}
+
+caption {
+    font-family:'Roboto';
+    font-weight: bolder;
+    background-color:orange;
+    width: 98.8%;
+    height: 35px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 18px;
+}
+
+
+th {
+    background-color:orange;
+    width: 40px;
+    height: 35px;
+}
+
+td {
+   background-color: #5A5A5A;
+   text-align: center;
+   height: 35px;
+}
