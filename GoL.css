@@ -1,53 +1,69 @@
 *{
-    font-family: monospace;
-  }
-  #countdownTimer{
-    color: brown;
-      
-  }
-  body{
-    background-image:url("gpbg3.jpg"); 
+  font-family: monospace;
+}
+#countdownTimer{
+  color: brown;
+    
+}
+body{
+  background-image:url("gpbg3.jpg"); 
+
+    
+}
+p{
+  background-color: aliceblue;
+  color: blue;
+  border: 10px solid black;
+  width: fit-content;
+  margin-left:55% ;
+  margin-top: -70%;
+}
+td {
   
-      
-  }
-  p{
-    background-color: aliceblue;
-    color: blue;
-    border: 10px solid black;
-    width: fit-content;
-    margin-left:55% ;
-    margin-top: -70%;
-  }
-  td {
+  border: 1px solid black;
+  padding: 10px;
+  width: 5px;
+  height: 5px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+  padding: 10px;
+  cursor: pointer;
+  background-color: grey;
     
-    border: 1px solid black;
-    padding: 10px;
-    width: 10px;
-    height: 10px;
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid black;
-    padding: 10px;
-    cursor: pointer;
-    background-color: grey;
-      
+}
+ 
+button{
+  color: blueviolet;
+  background-color: black;
+  border-radius: 20px;
+  border: navy;
+  
+}
+table {
+  border-collapse: collapse;
+}
+img {
+  
+  max-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  display: none;
+ }
+
+ .blue {
+  animation-name: move-down;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes move-down {
+  0% {
+    transform: translateY(0%);
   }
-   
-  button{
-    color: blueviolet;
-    background-color: black;
-    border-radius: 20px;
-    border: navy;
-    
+  100% {
+    transform: translateY(100%);
   }
-  table {
-    border-collapse: collapse;
-  }
-  img {
-    
-    max-width: 100%;
-    max-height: 100%;
-    max-width: 100%;
-    height: auto;
-    display: none;
-   }
+}

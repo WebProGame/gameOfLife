@@ -3,23 +3,28 @@
   <meta charset="UTF-8" >
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="GoL.css" type="text/css" rel="stylesheet">
-<script src="GoL.js"></script>
+<link href="./GoL.css" type="text/css" rel="stylesheet">
+<script src="./GoL.js"></script>
 <title>GamePlay</title>
 </head>
 <body>
   <div>
     
+
     <label for="pairs-needed">Size of Game:</label>
-    <input type="number" id="pairs-needed" min="20" max="40" value="8">
-    <label for="time-To-See">Chance to see:</label>
-    <select id="time-To-See">
-      <option value="3">3 seconds</option>
-      <option value="5">5 seconds</option>
-      <option value="8">8 seconds</option>
+    <select id="pairs-needed">
+      <option value="200">200</option>
+      <option value="312.5">312</option>
+      <option value="420.5">420</option>
     </select>
 
     <button onclick="gameUpload()">Game</button>
+    <button id="animate-button">Animate</button>
+    <button onclick="animateBlueCells()">Animate Blue Cells</button>
+
+
+    <button onclick="changeRandomCell()">Change random cell to blue</button>
+
   </div>
 <div>
     <table id="mxnGrid"></table>
@@ -27,5 +32,15 @@
     <a href="GamePlayRules.html">GamePlay Rules</a>
     <a href="payroll.html">Payroll</a>
   </div>
+  
+ 
+
+  
+
+
+
+
+
 </body>
+
 </html>
