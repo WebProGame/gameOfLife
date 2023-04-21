@@ -6,7 +6,7 @@
       
   }
   body{
-    background-image:url("gpbg3.jpg"); 
+    background-color:bisque;
   
       
   }
@@ -34,10 +34,11 @@
   }
    
   button{
-    color: blueviolet;
-    background-color: black;
+    color: white;
+    background-color: blueviolet;
     border-radius: 20px;
     border: navy;
+    
     
   }
   table {

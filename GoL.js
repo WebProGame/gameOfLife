@@ -42,6 +42,14 @@ function gameUpload() {
         createTable += "</tr>";
       }
       document.getElementById("mxnGrid").innerHTML = createTable;
+
+
+      //call to keepScore below!
+      keepScore(); //goal of keepScore is to keep user's score until they hit the "Reset" button.
+    }
+
+    function keepScore(){
+      let score = 0; 
     }
     
     function shuffle(array) {
