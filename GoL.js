@@ -42,14 +42,6 @@ function gameUpload() {
         createTable += "</tr>";
       }
       document.getElementById("mxnGrid").innerHTML = createTable;
-
-
-      //call to keepScore below!
-      keepScore(); //goal of keepScore is to keep user's score until they hit the "Reset" button.
-    }
-
-    function keepScore(){
-      let score = 0; 
     }
     
     function shuffle(array) {
@@ -68,68 +60,97 @@ function gameUpload() {
 var userClick1 = null;
 
 function checkBlockCovered(cell) {
-  var img = cell.getElementsByTagName("img")[0];
-  cell.style.backgroundColor = "white";
-  img.style.display = "block";
-
-  if (userClick1 === null) {
-    
-    userClick1 = cell;
-  } else {
-   
-    var imageClicked1st = userClick1.getElementsByTagName("img")[0];
-    if (img.src === imageClicked1st.src) {
-      
-      userClick1.onclick = null;
-      cell.onclick = null;
-      
-      
-    } else {
-      var delayT = (document.getElementById("time-To-See").value)*100;
-     
-      setTimeout(function() {
-        imageClicked1st.style.display = "none";
-        img.style.display = "none";
-        userClick1.style.backgroundColor = "grey";
-        cell.style.backgroundColor = "grey";
-      }, delayT);
-    }
-    
-    
-    
-    userClick1 = null;
-  }
-  
-}
-
-function timer1(pairsNumber) {
-    var limittoTime = 0;
-    if (pairsNumber === 8) {
-       
-      limittoTime = 120;
-    } else if (pairsNumber === 10) {
-      limittoTime = 150;
-    } else if (pairsNumber === 12) {
-      limittoTime = 180;
-    } else {
-      alert("Invalid table size");
-      return;
-    }
-    var sectionTime = document.createElement("div");
-    sectionTime.setAttribute("id", "timer");
-    sectionTime.innerHTML = "<p> Time remaining: <span id='countdownTimer'>" + limittoTime + "</span> seconds</p>";
-    document.body.appendChild(sectionTime);
-    var countTime = document.getElementById("countdownTimer");
-    var countTimeIN = setInterval(function() {
-      limittoTime--;
-      if (limittoTime < 0) {
-        clearInterval(countTimeIN);
-        alert("GameOver your time has finished and page will restart");
-        sectionTime.remove();
-        location.reload();
-        sectionTime.remove();
+  if (cell.getAttribute("data-covered") === "false") {
+    cell.setAttribute("data-covered", "true");
+    cell.style.backgroundColor = "blue";
+    setTimeout(function() {
+      // check cells around clicked cell
+      var cellsAround = getAdjacentCells(cell);
+      var hasBlueNeighbor = false;
+      for (var i = 0; i < cellsAround.length; i++) {
+        var adjCell = cellsAround[i];
+        if (adjCell.style.backgroundColor === "blue") {
+          hasBlueNeighbor = true;
+          break;
+        }
+      }
+      if (!hasBlueNeighbor) {
+        cell.setAttribute("data-covered", "false");
+        cell.style.backgroundColor = "";
       } else {
-        countTime.innerHTML = limittoTime;
+        // check if this cell has 3 covered neighbors
+        var coveredNeighbors = 0;
+        cellsAround.forEach(function(adjCell) {
+          if (adjCell.getAttribute("data-covered") === "true") {
+            coveredNeighbors++;
+          }
+        });
+        if (coveredNeighbors === 3) {
+          cellsAround.push(cell); // include clicked cell in the list
+          cellsAround.forEach(function(adjCell) {
+            adjCell.setAttribute("data-covered", "false");
+            adjCell.style.backgroundColor = "";
+          });
+        }
       }
     }, 1000);
+  } else {
+    // cell is already covered, do nothing
   }
+}
+
+
+function getAdjacentCells(cell) {
+  var row = cell.parentNode.rowIndex;
+  var col = cell.cellIndex;
+  var adjacentCells = [];
+
+  for (var i = row - 1; i <= row + 1; i++) {
+    for (var j = col - 1; j <= col + 1; j++) {
+      if (i >= 0 && i < cell.parentNode.parentNode.rows.length && 
+          j >= 0 && j < cell.parentNode.parentNode.rows[i].cells.length &&
+          (i !== row || j !== col)) {
+        adjacentCells.push(cell.parentNode.parentNode.rows[i].cells[j]);
+      }
+    }
+  }
+
+  return adjacentCells;
+}
+
+
+function changeRandomCell() {
+  var tableCells = document.querySelectorAll("#mxnGrid td[data-covered='false']");
+  if (tableCells.length > 0) {
+    var randomIndex = Math.floor(Math.random() * tableCells.length);
+    var randomCell = tableCells[randomIndex];
+    randomCell.setAttribute("data-covered", "true");
+    randomCell.style.backgroundColor = "blue";
+  }
+}
+function animateBlueCells() {
+  var cells = document.querySelectorAll("#mxnGrid td[data-covered='true'][style*='background-color: blue']");
+  var cellsToMove = [];
+  cells.forEach(function(cell) {
+    var row = cell.parentNode.rowIndex;
+    var col = cell.cellIndex;
+    if (row + 1 < document.getElementById("mxnGrid").rows.length) {
+      var nextCell = document.getElementById("mxnGrid").rows[row + 1].cells[col];
+      if (nextCell.getAttribute("data-covered") === "false") {
+        cell.setAttribute("data-covered", "false");
+        cell.style.backgroundColor = "";
+        nextCell.setAttribute("data-covered", "true");
+        nextCell.style.backgroundColor = "blue";
+        cellsToMove.push(nextCell);
+      }
+    } else {
+      cell.setAttribute("data-covered", "false");
+      cell.style.backgroundColor = "";
+    }
+  });
+  if (cellsToMove.length > 0) {
+    setTimeout(function() {
+      animateBlueCells();
+    }, 1000);
+  }
+}

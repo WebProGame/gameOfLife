@@ -1,31 +1,44 @@
-<?php session_start(); /* Starts the session */
-	
-	/* Check Login form submitted */	
-	if(isset($_POST['submit'])){
-		/* Define username and associated password array */
-		/* You can change username and associated password array to your pref*/
-        if(isset($_SESSION['user'])  && isset($_SESSION['pass']))
-        {
-            print_r($_SESSION);
-        }
-		$logins = array('raymond' => '123456','humi' => '4321','david' => 'wordpass', 'jennifer' => 'hardpass', 'guest' => 'password');
-        $_SESSION['username'] = $logins['raymond'];
-//		$logins += [$_SESSION["username"] => $_SESSION["password"]];
-		/* Check and assign submitted Username and Password to new variable */
-		$Username = isset($_POST['name']) ? $_POST['name'] : '';
-		$Password = isset($_POST['pass']) ? $_POST['pass'] : '';
-		
-		/* Check Username and Password existence in defined array */		
-		if (isset($logins[$Username]) && $logins[$Username] == $Password){
-			/* Success: Set session variables and redirect to Protected page  */
-			$_SESSION['UserData']['name']=$logins[$Username];
-			header("location:./GoL.html");
-			exit;
-		} else {
-			/*Unsuccessful attempt: Set error message */
-			$msg="<p id='error'>Invalid Login Details. Check username or password!</p>";
-		}
-	}
+<?php 
+$username = "";
+$password = "";
+$missing = array();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+ {
+  // Validate input data
+  if (empty(trim($_POST["name"]))) {
+    $missing[] = "Please enter a username!";
+  } else {
+    $username = trim($_POST["name"]);
+  }
+
+  if (empty(trim($_POST["pass"]))) {
+    $missing[] = "Please enter a password.";
+  } else {
+    $password = trim($_POST["pass"]);
+  }
+
+  if (count($missing) == 0) {
+    // Read users file
+    $filename = "players.txt";
+    $file = fopen($filename, "r");
+    while (!feof($file)) {
+      $line = fgets($file);
+      $user = unserialize(trim($line));
+      if ( ($user["username"] == $username) && ($user["password"] == $password) ) 
+      {
+        header("location: GoL.html");
+        exit();
+      }
+      else
+      {
+        $missing[] = "Invalid username or password.";
+      }
+    }
+    fclose($file);
+  }
+}
+?>
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,13 +47,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./index.css">
-    <script src="./index.js"></script>
     <title>Homepage</title>
 </head>
 <body>
     <main class="bg"></main>
-        <form action="" method="post" name="login-form">
+        <form method="post" name="login-form">
 
+            <?php if (count($missing) > 0) : ?>
+            <div>
+                <?php foreach ($missing as $error) : ?>
+                <p><?php echo $error; ?></p>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
             <div class="loginBox">
                 <p id="loginTitle">LOGIN</p>
                 <label for="name" class="credentials"><b>Username</b></label>
@@ -49,7 +68,7 @@
                 <label for="pass"><b>Password</b></label>
                 <input type="password" placeholder="Password" name="pass" class="inputBox"><br>
 
-                <button id="register" name="register" onclick="change()"><a href="./register.php">Register</a></button>
+                <button id="register" name="register"><a href="./register.php">Register</a></button>
 
                 <button type="submit" id="submit" name="submit">Login</button>
 
