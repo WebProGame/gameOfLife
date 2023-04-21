@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,26 @@
     <title> Leaderboard! </title>
 </head>
 <body>
-    <div id="table"> 
+    <?php
+    $filename = "players.txt";
+    $file = fopen($filename, "r");
+    while (!feof($file)) {
+      $line = fgets($file);
+      $user = unserialize(trim($line));
+      if ($user['username'] == 'raymond')
+      {
+        
+    echo "<pre>";
+    print_r($_SESSION);
+    echo "</pre>";
+    //  echo "Username: ".$user['username']." ";
+    //  echo "Score: ". $user['score']." ";
+     // echo "Time: ". $user['time']."<br>";
+      }
+    }
+    ?>
+
+<div id="table"> 
         <br>
         <table id="scoreboard" >
             <caption> <span> Leaderboard </span> </caption>
@@ -24,5 +46,6 @@
             </tr>
         </table>
     </div>
+
 </body>
 </html>

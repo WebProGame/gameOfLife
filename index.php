@@ -1,4 +1,8 @@
-<?php 
+<?php
+
+session_start();
+
+
 $username = "";
 $password = "";
 $missing = array();
@@ -27,7 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
       $user = unserialize(trim($line));
       if ( ($user["username"] == $username) && ($user["password"] == $password) ) 
       {
-        header("location: GoL.html");
+        $_SESSION['username'] = $username;
+        $_SESSION['score'] = 0;
+        $_SESSION['time'] = 0;
+        header("location: GoL.html"); 
         exit();
       }
       else
