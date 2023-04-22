@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 <label for="pass"><b>Password</b></label>
                 <input type="password" placeholder="Password" name="pass" class="inputBox"><br>
 
-                <button id="register" name="register"><a href="./register.php">Register</a></button>
+                <button id="register" name="register"><a id="regLink" href="./register.php">Register</a></button>
 
                 <button type="submit" id="submit" name="submit">Login</button>
 

@@ -25,8 +25,8 @@
 }
 .loginBox
 {
-    background-color: rgb(246, 255, 253);
-    color: rgb(37, 37, 37);
+    background-color: #333333;
+    color: white;
     width:300px;
     height:400px;
 
@@ -39,7 +39,7 @@
     position: absolute;
 
     padding: 30px;
-    border: 5px solid rgba(60, 161, 35, 0.658);
+    border: 5px solid #89225d;
     border-radius: 25px;
     z-index:2;
 }
@@ -51,8 +51,9 @@
 }
 #submit
 {
-  background-color: #040faa;
+  background-color: #db72af;
   color: white;
+  text-decoration:underline;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
@@ -62,7 +63,7 @@
 }
 #register
 {
-  background-color: #04aa49;
+  background-color: #89225d;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -80,19 +81,19 @@
 }
 #regLink
 {
-    color:rgb(255, 238, 0);
+    color: white;
 }
 #regLink:hover
 {
-    color:rgb(255, 25, 25);
+    color:#b02c78;
 }
 #submit:hover
 {
-    background-color: #2530c4; 
+    background-color: #df7fb6; 
 }
 #register:hover
 {
-    background-color: #39ce77; 
+    background-color: #b02c78; 
 }
 #logo
 {

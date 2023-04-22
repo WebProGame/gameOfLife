@@ -11,8 +11,9 @@ session_start();
     <title> Leaderboard! </title>
 </head>
 <body>
-    <?php
-
+  
+   <?php
+    
     $newuser; //declare new user variable
     // We search through the players.txt file to find a certain user's data. Continues until end of file.
     $filename = "players.txt";
@@ -52,22 +53,25 @@ session_start();
       }
   }
 
-  fclose($file);
-    ?> 
+  fclose($file); 
 
+
+  
+    ?> 
+ 
 <div id="table"> 
         <br>
         <table id="scoreboard" >
             <caption> <span> Leaderboard </span> </caption>
             <tr>
-                <th> Rank </th>
                 <th> User </th>
                 <th> Score </th>
+                <th> Time </th>
             </tr>
             <tr>
-                <td> 1 </td>
-                <td> Wubzy </td>
+                <td> Name </td>
                 <td> Score </td>
+                <td> Time </td>
             </tr>
         </table>
     </div>
