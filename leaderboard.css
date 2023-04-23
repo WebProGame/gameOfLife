@@ -1,15 +1,22 @@
-#scoreboard {
+table {
     font-family:'Roboto';
     color:whitesmoke;
     width: 50%;
     border-spacing: 6px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
 }
 
 caption {
     font-family:'Roboto';
     font-weight: bolder;
     background-color:orange;
-    width: 98.8%;
+    width:40%;
     height: 35px;
     text-align: center;
     margin-right: auto;
@@ -20,12 +27,53 @@ caption {
 
 th {
     background-color:orange;
-    width: 40px;
+    width:16.6%;
     height: 35px;
 }
 
 td {
    background-color: #5A5A5A;
    text-align: center;
+   width:16.6%;
    height: 35px;
+}
+
+#menu {
+    font-size: 18px;
+    font-weight: bold;
+} 
+
+ul {
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:orange;
+}
+
+li {
+    float: left;
+    
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 14px;
+    text-decoration: wavy;
+}
+
+li a:hover{
+    background-color:#FFBF00;
+}
+
+body {
+   /* background-color:#444444; */
+    width:99%;
+    height:43vw;
+    background-image: url('./leaderboard_bg.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

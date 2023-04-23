@@ -11,7 +11,22 @@ session_start();
     <title> Leaderboard! </title>
 </head>
 <body>
-  
+        <div id="menu">
+            <ul>
+                <li>
+                    <a href="index.php"> Login </a>
+                </li>
+
+                <li>
+                    <a href="register.php"> Register </a>
+                </li>
+
+                <li>
+                    <a href="leaderboard.php"> Leaderboard </a>
+                </li>
+            </ul>
+        </div>
+
    <?php
     
     $newuser; //declare new user variable
@@ -19,17 +34,14 @@ session_start();
     $filename = "players.txt";
     $file = fopen($filename, "r");
     while (!feof($file)) { //while there's still content within the file...
-      $line = fgets($file);
+      $line = fgets($file); //get a line from the file and store it into $line
       $user = unserialize(trim($line));
     // Once found, we update their data into a new associative array, newUser
       if ($user['username'] == $_SESSION['username'])
       {
         $newUser = $user;
-        $newUser['score'] = 1000;
-        $newUser['time'] = 60;
-        echo "<pre>";
-        print_r($newUser);
-        echo "</pre>";
+        $newUser['score'] = 1000; //will later be updated to $_SESSION['time']
+        $newUser['time'] = 60; //will later be updated to $_SESSION['score']
       }
     }
 
@@ -49,19 +61,35 @@ session_start();
       // delete the line by moving the file pointer to the beginning of the line and writing an empty string
           fseek($file, -strlen($line), SEEK_CUR);
           fwrite($file, str_repeat(" ", strlen($line)));
+          trim($line);
           break; 
       }
   }
 
   fclose($file); 
 
+  //below will be code that will access players.txt information in order to generate the table for the leaderboard
+  $filename = "players.txt";
+  $file = fopen($filename, "r");
+  echo "<table>"; //start the table
+  echo "<caption> <span> Leaderboard </span> </caption>";
+  echo "<tr>  <th> User </th>   <th> Score </th>   <th> Time </th>  </tr>"; //table header created
+  while(!feof($file)){
+    $line = fgets($file);
+    $user = unserialize(trim($line)); //unserializes the dats so we just get values we need
+    //below we start generating the table rows!
+    echo "<tr>  <td>" . $user['username'] . "</td>   <td>" . $user['score'] . "</td>  <td>" . $user['time'] . "</td>  </tr>";
+  }
+  echo "</table>"; //end the table here after the loop to generate the rows is done!
 
-  
-    ?> 
- 
-<div id="table"> 
+  fclose($file); 
+
+    ?>
+
+<!--
+<div> 
         <br>
-        <table id="scoreboard" >
+        <table>
             <caption> <span> Leaderboard </span> </caption>
             <tr>
                 <th> User </th>
@@ -75,5 +103,6 @@ session_start();
             </tr>
         </table>
     </div>
+-->
 </body>
 </html>

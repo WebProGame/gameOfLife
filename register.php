@@ -52,7 +52,7 @@
     // And stores that data into a text on its own line.        
             $filename = "players.txt";
             $file = fopen($filename, "a");
-            fwrite($file, serialize($player)."\n");
+            fwrite($file, "\n" . serialize($player));
             fclose($file);
       
     // Registration is complete and the player is redirected automatically to the index.php page to login
@@ -70,6 +70,23 @@
     <title>Register Now</title>
 </head>
 <body>
+
+      <div id="menu">
+            <ul>
+                <li>
+                    <a href="index.php"> Login </a>
+                </li>
+
+                <li>
+                    <a href="register.php"> Register </a>
+                </li>
+
+                <li>
+                    <a href="leaderboard.php"> Leaderboard </a>
+                </li>
+            </ul>
+        </div>
+
     <main class="bg"></main>
     <form method="post" name="register-form">
             <div class="loginBox">

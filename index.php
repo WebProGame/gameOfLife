@@ -61,6 +61,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     <title>Homepage</title>
 </head>
 <body>
+  
+<div id="menu">
+            <ul>
+                <li>
+                    <a href="index.php"> Login </a>
+                </li>
+
+                <li>
+                    <a href="register.php"> Register </a>
+                </li>
+
+                <li>
+                    <a href="leaderboard.php"> Leaderboard </a>
+                </li>
+            </ul>
+        </div>
+    
     <main class="bg"></main>
         <form method="post" name="login-form">
             <div class="loginBox">

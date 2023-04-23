@@ -139,3 +139,33 @@ body
 {
     background-color: black;
 }
+
+#menu {
+    font-size: 18px;
+    font-weight: bold;
+} 
+
+ul {
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:#89225d;
+}
+
+li {
+    float: left;
+    
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 14px;
+    text-decoration: wavy;
+}
+
+li a:hover{
+    background-color:#b02c78;
+}
